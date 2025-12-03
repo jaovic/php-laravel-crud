@@ -26,9 +26,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // Verificar se é admin
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return strtolower($this->role) === 'admin';
     }
 }

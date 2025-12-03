@@ -1,15 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\UserController;
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
-    return redirect()->route('produtos.index');
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
+
+    if (Auth::user()->isAdmin()) {
+        return redirect()->route('admin.dashboard');
+    }
+
+    return redirect()->route('dashboard');
 });
 
-Route::resource('produtos', ProdutoController::class);
 
 // Rotas de autenticação (guest)
 Route::middleware('guest')->group(function () {

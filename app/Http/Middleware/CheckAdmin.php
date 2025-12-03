@@ -11,7 +11,13 @@ class CheckAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || !Auth::user()->isAdmin()) {
+        if (!Auth::check()) {
+            abort(403, 'Acesso negado.');
+        }
+
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
             abort(403, 'Acesso negado. Apenas administradores.');
         }
 
