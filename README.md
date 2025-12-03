@@ -1,59 +1,275 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema Laravel CRUD com Autenticação
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-11.x-red.svg)
+![PHP](https://img.shields.io/badge/PHP-8.5-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## About Laravel
+Sistema completo de gerenciamento CRUD desenvolvido em Laravel com sistema robusto de autenticação e autorização.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Sobre o Projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este é um sistema web desenvolvido com Laravel que implementa funcionalidades completas de CRUD (Create, Read, Update, Delete) com sistema de autenticação de usuários e controle de acesso baseado em roles (funções).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### ✨ Funcionalidades
 
-## Learning Laravel
+- 🔐 Sistema de autenticação (Login/Registro)
+- 👤 Gerenciamento de usuários
+- 🛡️ Autorização baseada em roles (Admin/User)
+- 📊 Dashboard personalizado
+- 🔒 Rotas protegidas por middleware
+- 💾 Operações CRUD completas
+- 🎨 Interface responsiva e moderna
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🚀 Tecnologias Utilizadas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Laravel 11.x** - Framework PHP
+- **PHP 8.5** - Linguagem de programação
+- **MySQL/SQLite** - Banco de dados
+- **Blade** - Template engine
+- **Tailwind CSS** - Framework CSS (opcional)
 
-## Laravel Sponsors
+## 📦 Pré-requisitos
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Antes de começar, você precisa ter instalado:
 
-### Premium Partners
+- PHP >= 8.2
+- Composer
+- MySQL ou SQLite
+- Node.js e NPM (opcional, para assets)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🔧 Instalação
 
-## Contributing
+### 1. Clone o repositório
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/seu-usuario/php-laravel-crud.git
+cd php-laravel-crud
+```
 
-## Code of Conduct
+### 2. Instale as dependências
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Configure o ambiente
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## License
+### 4. Configure o banco de dados
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Edite o arquivo `.env` com suas credenciais:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=seu_banco
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+```
+
+**Ou use SQLite (mais simples para desenvolvimento):**
+
+```env
+DB_CONNECTION=sqlite
+```
+
+Crie o arquivo do banco:
+```bash
+touch database/database.sqlite
+```
+
+### 5. Execute as migrations
+
+```bash
+php artisan migrate
+```
+
+### 6. (Opcional) Crie um usuário admin
+
+```bash
+php artisan tinker
+```
+
+Dentro do Tinker:
+```php
+\App\Models\User::create([
+    'name' => 'Admin',
+    'email' => 'admin@example.com',
+    'password' => bcrypt('password123'),
+    'role' => 'admin'
+]);
+```
+
+### 7. Inicie o servidor
+
+```bash
+php artisan serve
+```
+
+Acesse: `http://localhost:8000`
+
+## 📁 Estrutura do Projeto
+
+```
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   └── AuthController.php
+│   │   └── Middleware/
+│   │       └── CheckAdmin.php
+│   └── Models/
+│       └── User.php
+├── database/
+│   └── migrations/
+├── resources/
+│   └── views/
+│       ├── auth/
+│       │   ├── login.blade.php
+│       │   └── register.blade.php
+│       ├── admin/
+│       │   └── dashboard.blade.php
+│       └── dashboard.blade.php
+├── routes/
+│   └── web.php
+└── .env
+```
+
+## 🎯 Uso
+
+### Registro de Usuário
+
+1. Acesse `/register`
+2. Preencha o formulário com nome, e-mail e senha
+3. Clique em "Registrar"
+
+### Login
+
+1. Acesse `/login`
+2. Insira e-mail e senha
+3. Clique em "Entrar"
+
+### Dashboard
+
+Após autenticado, você será redirecionado para `/dashboard` onde terá acesso às funcionalidades do sistema.
+
+### Área Administrativa
+
+Usuários com role `admin` têm acesso à rota `/admin` com privilégios especiais.
+
+## 🔐 Sistema de Autorização
+
+O sistema implementa dois tipos de usuários:
+
+| Role  | Descrição | Acesso |
+|-------|-----------|--------|
+| **user** | Usuário padrão | Dashboard básico |
+| **admin** | Administrador | Dashboard + Painel Admin |
+
+### Middleware Disponíveis
+
+- `auth` - Protege rotas que requerem autenticação
+- `guest` - Permite acesso apenas para não autenticados
+- `admin` - Permite acesso apenas para administradores
+
+## 🛠️ Comandos Úteis
+
+```bash
+# Limpar cache
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+# Executar migrations
+php artisan migrate
+
+# Reverter migrations
+php artisan migrate:rollback
+
+# Criar um novo controller
+php artisan make:controller NomeController
+
+# Criar um novo model
+php artisan make:model NomeModel -m
+
+# Criar middleware
+php artisan make:middleware NomeMiddleware
+```
+
+## 🐛 Troubleshooting
+
+### Erro de Permissão
+
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+### Erro de Deprecation (PHP 8.5)
+
+Se você estiver usando PHP 8.5 e vendo warnings sobre `PDO::MYSQL_ATTR_SSL_CA`, edite `config/database.php` e substitua:
+
+```php
+PDO::MYSQL_ATTR_SSL_CA
+```
+
+Por:
+
+```php
+Pdo\Mysql::ATTR_SSL_CA
+```
+
+### Erro 500 no Registro
+
+Ative o debug no `.env`:
+```env
+APP_DEBUG=true
+```
+
+E verifique os logs em `storage/logs/laravel.log`
+
+## 🤝 Contribuindo
+
+Contribuições são sempre bem-vindas! Sinta-se à vontade para:
+
+1. Fazer um Fork do projeto
+2. Criar uma Branch para sua Feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a Branch (`git push origin feature/AmazingFeature`)
+5. Abrir um Pull Request
+
+## 📝 Roadmap
+
+- [ ] Implementar recuperação de senha
+- [ ] Adicionar verificação de e-mail
+- [ ] Sistema de permissões mais granular
+- [ ] API RESTful
+- [ ] Testes automatizados
+- [ ] Docker compose para desenvolvimento
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👤 Autor
+
+**João Fernandes**
+
+- GitHub: [@seu-usuario](https://github.com/seu-usuario)
+- LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
+- Email: joao.fernandes@example.com
+
+## 🙏 Agradecimentos
+
+- [Laravel](https://laravel.com) - Framework PHP incrível
+- [Tailwind CSS](https://tailwindcss.com) - Framework CSS
+- Comunidade Laravel Brasil
+
+---
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela!
+
+**Desenvolvido com ❤️ usando Laravel**
