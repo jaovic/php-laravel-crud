@@ -121,8 +121,8 @@
     <div class="container">
         <h1>Login</h1>
 
-        @if(session('success'))
-        <div class="success">{{ session('success') }}</div>
+        @if (session('success'))
+            <div class="success">{{ session('success') }}</div>
         @endif
 
         <form method="POST" action="{{ route('login') }}">
@@ -132,7 +132,7 @@
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
                 @error('email')
-                <div class="error">{{ $message }}</div>
+                    <div class="error">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -140,7 +140,7 @@
                 <label for="password">Senha</label>
                 <input type="password" id="password" name="password" required>
                 @error('password')
-                <div class="error">{{ $message }}</div>
+                    <div class="error">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -155,6 +155,10 @@
         <div class="link">
             Não tem uma conta? <a href="{{ route('register') }}">Registre-se</a>
         </div>
+        <div class="link">
+            <a href="{{ route('password.request') }}">Esqueci minha senha</a>
+        </div>
+
     </div>
 </body>
 
