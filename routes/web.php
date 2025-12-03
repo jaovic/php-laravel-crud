@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return redirect()->route('produtos.index');
@@ -29,8 +30,12 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rotas de admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    // Gerenciamento de usuários
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+    Route::post('/users/{user}/role', [UserController::class, 'updateRole'])->name('admin.users.role');
 });
