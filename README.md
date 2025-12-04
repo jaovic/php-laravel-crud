@@ -243,7 +243,7 @@ Contribuições são sempre bem-vindas! Sinta-se à vontade para:
 
 ## 📝 Roadmap
 
-- [ ] Implementar recuperação de senha
+- [x] Implementar recuperação de senha
 - [ ] Adicionar verificação de e-mail
 - [ ] Sistema de permissões mais granular
 - [ ] API RESTful
