@@ -258,9 +258,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **João Fernandes**
 
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [Seu Nome](https://linkedin.com/in/seu-perfil)
-- Email: joao.fernandes@example.com
+- GitHub: [@seu-usuario]([https://github.com/jaovic)
+- LinkedIn: [João Victor Martins](https://www.linkedin.com/in/joao-victor-martins-silva/)
+- Email: joao.fernandes@cactusgaming.net
 
 ## 🙏 Agradecimentos
 
