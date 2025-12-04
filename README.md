@@ -248,7 +248,7 @@ Contribuições são sempre bem-vindas! Sinta-se à vontade para:
 - [ ] Sistema de permissões mais granular
 - [ ] API RESTful
 - [ ] Testes automatizados
-- [ ] Docker compose para desenvolvimento
+- [x] Docker compose para desenvolvimento
 
 ## 📄 Licença
 
