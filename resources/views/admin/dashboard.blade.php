@@ -94,7 +94,12 @@
         <h1>⚙️ Painel Administrativo</h1>
 
         <div>
-            <a href="{{ route('logout') }}">Sair</a>
+            <a href="#" onclick="document.getElementById('logout-form').submit();">Sair</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
         </div>
     </nav>
 
